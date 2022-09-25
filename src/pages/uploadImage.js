@@ -3,6 +3,8 @@ import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios"
+import Grid from '@mui/material/Unstable_Grid2';
+
 
 const UploadImage = () => {
   const [extension, setExtension] = useState("");
@@ -48,15 +50,20 @@ const UploadImage = () => {
   return (
     <div>
       <Box sx={{ height: "100vh" }}>
-        <Link to={`/`}>
-          <img
-            src="logo_icon.png"
-            alt="logo_icon"
-            width="30"
-            height="30"
-            style={{ margin: "15px" }}
-          />
-        </Link>
+        <Grid container spacing={3}>
+          <Grid>
+              <Link to={`/`}>
+              <img src="logo_icon.png"
+                alt="logo_icon"
+                width="30"
+                height="30"
+                style={{ marginLeft: "15px" , marginTop: "15px"}}/>
+              </Link>
+          </Grid>
+          <Grid display="flex" justifyContent="center" alignItems="center">
+              <h3>ShopGather</h3>
+          </Grid>
+        </Grid>
         <Box
           display="flex"
           justifyContent="center"

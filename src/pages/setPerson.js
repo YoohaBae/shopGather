@@ -6,6 +6,7 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { TextField } from "@mui/material";
 import { Link } from "react-router-dom";
+import Grid from "@mui/material/Unstable_Grid2";
 
 const EnterName = ({ name, id, listOfPerson, setListOfPerson }) => {
   const handleChange = (e) => {
@@ -71,15 +72,20 @@ const UploadImage = () => {
   return (
     <div>
       <Box>
-        <Link to={`/`}>
-          <img
-            src="logo_icon.png"
-            alt="logo_icon"
-            width="30"
-            height="30"
-            style={{ margin: "15px" }}
-          />
-        </Link>
+          <Grid container spacing={3}>
+              <Grid>
+                  <Link to={`/`}>
+                      <img src="logo_icon.png"
+                           alt="logo_icon"
+                           width="30"
+                           height="30"
+                           style={{ marginLeft: "15px" , marginTop: "15px"}}/>
+                  </Link>
+              </Grid>
+              <Grid display="flex" justifyContent="center" alignItems="center">
+                  <h3>ShopGather</h3>
+              </Grid>
+          </Grid>
 
         <div style={{ textAlign: "-webkit-center" }}>
           <h1>Number of people</h1>

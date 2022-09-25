@@ -3,6 +3,8 @@ import { Box } from "@mui/system";
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { DataGrid } from "@mui/x-data-grid";
+import Grid from "@mui/material/Unstable_Grid2";
+import {Link} from "react-router-dom";
 
 const ShowObject = ({ object, person }) => {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -113,13 +115,20 @@ const Result = () => {
   return (
     <div sx={{ height: "100vh" }}>
       <Box sx={{ height: "100vh" }}>
-        <img
-          src="logo_icon.png"
-          alt="logo_icon"
-          width="30"
-          height="30"
-          style={{ margin: "15px" }}
-        />
+        <Grid container spacing={3}>
+          <Grid>
+            <Link to={`/`}>
+              <img src="logo_icon.png"
+                   alt="logo_icon"
+                   width="30"
+                   height="30"
+                   style={{ marginLeft: "15px" , marginTop: "15px"}}/>
+            </Link>
+          </Grid>
+          <Grid display="flex" justifyContent="center" alignItems="center">
+            <h3>ShopGather</h3>
+          </Grid>
+        </Grid>
         {/* <Box sx={{ height: "100%", borderBottom: 1, borderColor: "divider" }}>
           <Tabs
             onChange={handleChange}
