@@ -6,10 +6,23 @@ from io import BytesIO
 import re
 import json
 from difflib import SequenceMatcher
+from fastapi.middleware.cors import CORSMiddleware
 
 from .ocr_api import ocr_space_buffer
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:3000",
+        "http://shopgather.tech",
+        "https://shopgather.tech"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 server = f"{os.getcwd()}/server/data/"
 
