@@ -5,6 +5,7 @@
   import { Box } from "@mui/system";
   import React, {useState} from "react";
   import { Link } from "react-router-dom";
+
   
   const UploadImage = () => {
     const [extension, setExtension] = useState("");
@@ -66,4 +67,4 @@
   };
   
   export default UploadImage;
-  
+

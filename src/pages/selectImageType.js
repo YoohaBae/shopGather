@@ -7,7 +7,7 @@
   
   const SelectImageType = () => {
     return (
-      <div>
+      <div> 
         <Box
          sx={{height:"100vh"}}
         >
@@ -27,7 +27,6 @@
             >
                 <Button variant="outlined" sx={{width: "50px", marginBottom: "15px"}}>Photo</Button>
                 <Button variant="outlined" sx={{width: "50px", marginBottom: "15px"}}>Scan</Button>
-                
             </Box>
         </Box>
         
