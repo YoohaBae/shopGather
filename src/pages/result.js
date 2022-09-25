@@ -6,22 +6,33 @@ import { DataGrid } from "@mui/x-data-grid";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Link } from "react-router-dom";
 
-const ShowObject = ({ object, person, listOfObject }) => {
+const ShowObject = ({ object, person, listOfObject, overlapped }) => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    console.log(object);
-    console.log(person);
+    // console.log(object);
+    // console.log(person);
+    // console.log(overlapped);
     let tempItems = [];
     let tempTotal = 0;
     for (let i = 0; i < person.object.length; i++) {
+      let objectL = object[person.object[i]];
+      //   console.log(objectL);
+      let itemId = objectL.id;
+      //   console.log(objectL.id);
+      let itemC = overlapped[itemId];
+      //   console.log(itemC);
+
       tempItems.push(object[person.object[i]]);
-      tempTotal += object[person.object[i]].price;
+      tempTotal +=
+        object[person.object[i]].price /
+        overlapped[object[person.object[i]].id];
     }
-    console.log(tempItems);
-    console.log(tempTotal * listOfObject.tax * 0.01);
-    console.log(total);
+    // console.log(tempItems);
+    // console.log(tempTotal);
+    // console.log(tempTotal * listOfObject.tax * 0.01);
+    // console.log(total);
     setSelectedItems(tempItems);
     setTotal((tempTotal + tempTotal * listOfObject.tax * 0.01).toFixed(2));
   }, []);
@@ -112,6 +123,23 @@ const Result = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const [overlapped, setOverlapped] = useState({});
+
+  useEffect(() => {
+    var tempOverlapped = [];
+    console.log(listOfPerson);
+    for (let i = 0; i < listOfPerson.length; i++) {
+      for (let j = 0; j < listOfPerson[i].object.length; j++)
+        tempOverlapped.push(listOfPerson[i].object[j]);
+    }
+    const result = {};
+    tempOverlapped.forEach((x) => {
+      result[x] = (result[x] || 0) + 1;
+    });
+    setOverlapped(result);
+    console.log(result);
+    console.log(tempOverlapped);
+  }, []);
 
   return (
     <div sx={{ height: "100vh" }}>
@@ -132,27 +160,13 @@ const Result = () => {
             <h3>ShopGather</h3>
           </Grid>
         </Grid>
-        {/* <Box sx={{ height: "100%", borderBottom: 1, borderColor: "divider" }}>
-          <Tabs
-            onChange={handleChange}
-            value={value}
-            aria-label="basic tabs example">
-            {listOfPerson.map((person) => (
-              <Tab label={person.name} key={person.id} />
-            ))}
-          </Tabs>
-        </Box>
-        {listOfPerson.map((person) => (
-          <TabPanel value={value} index={person.id} key={person.id}>
-            <ShowObject object={listOfObject.products} person={person} />
-          </TabPanel>
-        ))} */}
         {listOfPerson.map((person) => (
           <ShowObject
             object={listOfObject.products}
             person={person}
             key={person.id}
             listOfObject={listOfObject}
+            overlapped={overlapped}
           />
         ))}
       </Box>
