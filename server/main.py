@@ -119,14 +119,14 @@ def hi():
     return {"hi": "hello"}
 
 @app.post("/analyze/scan")
-def analyze_scanned_image():
-    file_name = "walmart3.jpeg"
-    img = Image.open(os.path.join(server, file_name))
-    buffer = BytesIO()
-    img.save(buffer, format="JPEG")
-    buffered = base64.b64encode(buffer.getvalue())
-    buffered = b'data:image/jpg;base64,' + buffered
-    text = ocr_space_buffer(buffered)
+def analyze_scanned_image(buffer):
+    #file_name = "walmart3.jpeg"
+    #img = Image.open(os.path.join(server, file_name))
+    #buffer = BytesIO()
+    #img.save(buffer, format="JPEG")
+    #buffered = base64.b64encode(buffer.getvalue())
+    #buffered = b'data:image/jpg;base64,' + buffered
+    text = ocr_space_buffer(buffer)
     json_type = json.loads(text)
     parsed_text = json_type["ParsedResults"][0]["ParsedText"]
     response = split_text_walmart(parsed_text)
