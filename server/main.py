@@ -1,5 +1,5 @@
 from PIL import Image
-from fastapi import FastAPI
+from fastapi import FastAPI, APIRouter
 import os
 import base64
 from io import BytesIO
@@ -22,6 +22,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+router = APIRouter(prefix="/api")
 
 server = f"{os.getcwd()}/server/data/"
 
@@ -115,11 +117,11 @@ def split_text_walmart(text):
     result = {"subtotal": subtotal, "tax": tax, "total": total, "products": formatted_products}
     return result
 
-@app.get("/")
+@router.get("/")
 def hi():
     return {"hi": "hello"}
 
-@app.post("/analyze/scan")
+@router.post("/analyze/scan")
 def analyze_scanned_image(buffer=Body(...)):
     #file_name = "walmart3.jpeg"
     #img = Image.open(os.path.join(server, file_name))
