@@ -42,7 +42,10 @@ const TakePhoto = () => {
         screenshotFormat="image/jpeg"
         videoConstraints={videoConstraints}>
         {({ getScreenshot }) => (
-          <div>
+          <div
+            style={{
+              textAlign: "-webkit-center",
+            }}>
             <IconButton
               color="primary"
               aria-label="take picture"
