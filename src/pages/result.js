@@ -6,30 +6,68 @@ import { DataGrid } from "@mui/x-data-grid";
 
 const ShowObject = ({ object, person }) => {
   const [selectedItems, setSelectedItems] = useState([]);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     console.log(object);
     console.log(person);
     let tempItems = [];
+    let tempTotal = 0;
     for (let i = 0; i < person.object.length; i++) {
-      tempItems.push(object[i]);
+      tempItems.push(object[person.object[i]]);
+      tempTotal += object[person.object[i]].price;
     }
     console.log(tempItems);
+    console.log(total);
     setSelectedItems(tempItems);
+    setTotal(tempTotal.toFixed(2));
   }, []);
 
   return (
-    <div style={{ height: "75%", width: "96%", paddingLeft: "10px" }}>
-      <DataGrid
-        rows={selectedItems}
-        columns={[
-          { field: "name", width: 300, editable: true },
-          { field: "price", editable: true },
-        ]}
-        pageSize={10}
-        rowsPerPageOptions={[5]}
-      />
-    </div>
+    <>
+      <h2
+        style={{ marginLeft: "15px", marginBottom: "5px", paddingTop: "15px" }}
+      >
+        Member #{person.id}:{" "}
+        {
+          JSON.parse(window.sessionStorage.getItem("people"))[person.id - 1]
+            .name
+        }
+      </h2>
+      <div
+        style={{
+          height: "40%",
+          width: "96%",
+          paddingLeft: "10px",
+          marginTop: "10px",
+          marginBotton: "40px",
+        }}
+      >
+        {/* <div style={{ marginRight: "10px" }}> */}
+
+        {/* </div> */}
+        <DataGrid
+          rows={selectedItems}
+          columns={[
+            { field: "name", width: 300, editable: true },
+            { field: "price", editable: true },
+          ]}
+          pageSize={10}
+          rowsPerPageOptions={[5]}
+        />
+      </div>
+      <h3
+        style={{
+          float: "right",
+          marginTop: "5px",
+          paddingTop: "0px",
+          marginBottom: "20px",
+          marginRight: "12px",
+        }}
+      >
+        Total: {total}
+      </h3>
+    </>
   );
 };
 
@@ -42,7 +80,8 @@ function TabPanel(props) {
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
-      {...other}>
+      {...other}
+    >
       {value === index && (
         <Box sx={{ p: 3 }}>
           <Typography>{children}</Typography>
@@ -66,7 +105,7 @@ const Result = () => {
     JSON.parse(window.sessionStorage.getItem("people"))
   );
   const [value, setValue] = React.useState(0);
-
+  const [count, setCount] = React.useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
