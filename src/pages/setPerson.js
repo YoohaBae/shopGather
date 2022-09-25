@@ -24,7 +24,8 @@ const EnterName = ({ name, id, listOfPerson, setListOfPerson }) => {
         alignItems: "center",
         justifyContent: "center",
         marginTop: "30px",
-      }}>
+      }}
+    >
       <div style={{ marginRight: "10px" }}>Member #{id}</div>
       <TextField
         id="outlined-basic"
@@ -38,12 +39,15 @@ const EnterName = ({ name, id, listOfPerson, setListOfPerson }) => {
 
 const UploadImage = () => {
   const [countOfPerson, setCountOfPerson] = useState(1);
-  const [listOfPerson, setListOfPerson] = useState([{ id: 1, name: "" }]);
+  const [listOfPerson, setListOfPerson] = useState([
+    { id: 1, name: "", object: [] },
+  ]);
 
   const plusNumberofPerson = () => {
     var newPerson = {
       id: countOfPerson + 1,
       name: "",
+      object: [],
     };
     setListOfPerson([...listOfPerson, newPerson]);
     setCountOfPerson(countOfPerson + 1);
@@ -60,10 +64,10 @@ const UploadImage = () => {
     }
   };
 
-  //   const link = {
-  //     pathname: `/checkList`,
-  //     state: { listOfPerson: listOfPerson },
-  //   };
+  const handleClickNext = () => {
+    window.sessionStorage.setItem("people", JSON.stringify(listOfPerson));
+    window.sessionStorage.setItem("count", 0);
+  };
 
   return (
     <div>
@@ -85,18 +89,21 @@ const UploadImage = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-          }}>
+          }}
+        >
           <IconButton
             aria-label="delete"
             style={{ marginTop: "8px", marginRight: "20px" }}
-            onClick={minusNumberofPerson}>
+            onClick={minusNumberofPerson}
+          >
             <RemoveIcon />
           </IconButton>
           <div>{countOfPerson}</div>
           <IconButton
             aria-label="add"
             style={{ marginTop: "8px", marginLeft: "20px" }}
-            onClick={plusNumberofPerson}>
+            onClick={plusNumberofPerson}
+          >
             <AddIcon />
           </IconButton>
         </div>
@@ -109,12 +116,8 @@ const UploadImage = () => {
             setListOfPerson={setListOfPerson}
           />
         ))}
-        <Button size="large" sx={{ float: "right" }}>
-          <Link
-            to={`/checkList`}
-            state={{ listOfPerson: listOfPerson }}
-            style={{ color: "inherit" }}
-          >
+        <Button size="large" sx={{ float: "right" }} onClick={handleClickNext}>
+          <Link to={`/checkList`} style={{ color: "inherit" }}>
             Next
           </Link>
         </Button>
