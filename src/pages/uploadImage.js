@@ -40,25 +40,26 @@ const UploadImage = () => {
           </Button>
           <div style={{ marginTop: "5px" }}>{extension}</div>
         </Box>
-        {extension.includes("png") ||
-        extension.includes("jpg") ||
-        extension.includes("jpeg") ? (
-          <div style={{ width: "100%", justifyContent: "right" }}>
-            <Button size="large" sx={{ float: "right" }}>
-              <Link to={`/selectImageType`} style={{ color: "inherit" }}>
-                Next
-              </Link>
-            </Button>
-          </div>
-        ) : (
-          <div style={{ width: "100%", justifyContent: "right" }}>
-            <Button size="large" sx={{ float: "right" }}>
-              <Link to={`/setPerson`} style={{ color: "inherit" }}>
-                Next
-              </Link>
-            </Button>
-          </div>
-        )}
+        {extension &&
+          (extension.includes("png") ||
+          extension.includes("jpg") ||
+          extension.includes("jpeg") ? (
+            <div style={{ width: "100%", justifyContent: "right" }}>
+              <Button size="large" sx={{ float: "right" }}>
+                <Link to={`/selectImageType`} style={{ color: "inherit" }}>
+                  Next
+                </Link>
+              </Button>
+            </div>
+          ) : (
+            <div style={{ width: "100%", justifyContent: "right" }}>
+              <Button size="large" sx={{ float: "right" }}>
+                <Link to={`/setPerson`} style={{ color: "inherit" }}>
+                  Next
+                </Link>
+              </Button>
+            </div>
+          ))}
       </Box>
     </div>
   );

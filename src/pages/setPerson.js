@@ -1,11 +1,11 @@
 import { IconButton } from "@mui/material";
 import { Button } from "@mui/material";
 import { Box } from "@mui/system";
-import { render } from "@testing-library/react";
 import React, { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { TextField } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const EnterName = ({ name, id, listOfPerson, setListOfPerson }) => {
   const handleChange = (e) => {
@@ -108,6 +108,11 @@ const UploadImage = () => {
             setListOfPerson={setListOfPerson}
           />
         ))}
+        <Button size="large" sx={{ float: "right" }}>
+          <Link to={`/checkList`} style={{ color: "inherit" }}>
+            Next
+          </Link>
+        </Button>
       </Box>
     </div>
   );
