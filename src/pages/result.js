@@ -4,8 +4,8 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { DataGrid } from "@mui/x-data-grid";
 import Grid from "@mui/material/Unstable_Grid2";
-import { Download } from "@mui/icons-material"
-import * as htmlToImage from 'html-to-image';
+import { Download } from "@mui/icons-material";
+import * as htmlToImage from "html-to-image";
 
 const ShowObject = ({ object, person, listOfObject, overlapped }) => {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -25,10 +25,8 @@ const ShowObject = ({ object, person, listOfObject, overlapped }) => {
       let itemC = overlapped[itemId];
       //   console.log(itemC);
 
-      tempItems.push(object[person.object[i]]);
-      tempTotal +=
-        object[person.object[i]].price /
-        overlapped[object[person.object[i]].id];
+      tempItems.push(objectL);
+      tempTotal += objectL.price;
     }
     // console.log(tempItems);
     // console.log(tempTotal);
@@ -127,16 +125,17 @@ const Result = () => {
   const [overlapped, setOverlapped] = useState({});
 
   const downloadSnapshot = () => {
-        const screenshotTarget = document.body
+    const screenshotTarget = document.body;
 
-        htmlToImage.toPng(screenshotTarget, { quality: 0.95, backgroundColor: 'white'})
-            .then(function (dataUrl) {
-                var link = document.createElement('a');
-                link.download = 'shopGather.png';
-                link.href = dataUrl;
-                link.click();
-            });
-    }
+    htmlToImage
+      .toPng(screenshotTarget, { quality: 0.95, backgroundColor: "white" })
+      .then(function (dataUrl) {
+        var link = document.createElement("a");
+        link.download = "shopGather.png";
+        link.href = dataUrl;
+        link.click();
+      });
+  };
 
   useEffect(() => {
     var tempOverlapped = [];
@@ -173,9 +172,14 @@ const Result = () => {
             <h3>ShopGather</h3>
           </Grid>
         </Grid>
-      <Button variant="outlined" startIcon={<Download />} style={{position: "absolute", right: 20}} onClick={downloadSnapshot}>
+        <Button
+          variant="outlined"
+          startIcon={<Download />}
+          style={{ position: "absolute", right: 20 }}
+          onClick={downloadSnapshot}
+        >
           Download
-      </Button>
+        </Button>
         {listOfPerson.map((person) => (
           <ShowObject
             object={listOfObject.products}
