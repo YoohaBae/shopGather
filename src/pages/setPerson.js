@@ -60,6 +60,11 @@ const UploadImage = () => {
     }
   };
 
+  //   const link = {
+  //     pathname: `/checkList`,
+  //     state: { listOfPerson: listOfPerson },
+  //   };
+
   return (
     <div>
       <Box>
@@ -105,7 +110,11 @@ const UploadImage = () => {
           />
         ))}
         <Button size="large" sx={{ float: "right" }}>
-          <Link to={`/checkList`} style={{ color: "inherit" }}>
+          <Link
+            to={`/checkList`}
+            state={{ listOfPerson: listOfPerson }}
+            style={{ color: "inherit" }}
+          >
             Next
           </Link>
         </Button>

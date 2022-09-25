@@ -38,7 +38,8 @@ const CheckList = () => {
             display: "flex",
             alignItems: "center",
             marginLeft: "40px",
-          }}>
+          }}
+        >
           <div style={{ marginRight: "10px" }}>
             <h2>Member #1: NAME</h2>
           </div>
