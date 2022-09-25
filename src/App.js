@@ -6,6 +6,7 @@ import SetPerson from "./pages/setPerson";
 import CheckList from "./pages/checkList";
 import CheckListTwo from "./pages/checkListTwo";
 import Result from "./pages/result";
+import TakePhoto from "./pages/takePhoto";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/setPerson" element={<SetPerson />} />
         <Route exact path="/checkList" element={<CheckList />} />
         <Route exact path="/checkListTwo" element={<CheckListTwo />} />
+        <Route exact path="/takePhoto" element={<TakePhoto />} />
         <Route path="/result" element={<Result />} />
       </Routes>
     </Router>

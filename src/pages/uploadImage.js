@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import axios from "axios"
 
 const UploadImage = () => {
   const [extension, setExtension] = useState("");
@@ -65,11 +65,14 @@ const UploadImage = () => {
           sx={{ height: "85%" }}>
           <Button
             variant="outlined"
-            sx={{ width: "250px", marginBottom: "15px" }}>
+            sx={{ width: "250px", marginBottom: "15px" }}
+          >
+            <Link to={`/takePhoto`} style={{ color: "inherit" }}>
             Take Photo of Receipt
+            </Link>
           </Button>
           <Button variant="contained" component="label" sx={{ width: "250px" }}>
-            Upload Reciept
+            Upload Receipt
             <input hidden accept="image/*" type="file" onChange={handleImage} />
           </Button>
           <div style={{ marginTop: "5px" }}>{extension}</div>
