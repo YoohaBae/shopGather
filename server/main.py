@@ -47,9 +47,15 @@ def split_text_walmart(text):
     lines = re.split(r"[~\n]+", text)
     walmart_product_start = 7
     for i in range(0, len(lines)):
+        find = re.findall("\d+\.\d+", lines[i])
+        if find:
+            walmart_product_start = i
+            break
+        """
         if "ST" in lines[i].split(" ")[0]:
             walmart_product_start = i + 1
             break
+        """
 
     products_line = []
     subtotal_line = None
@@ -98,7 +104,7 @@ def split_text_walmart(text):
 
 @app.post("/analyze/scan")
 def analyze_scanned_image():
-    file_name = "walmart.jpeg"
+    file_name = "walmart3.jpeg"
     img = Image.open(os.path.join(server, file_name))
     buffer = BytesIO()
     img.save(buffer, format="JPEG")
