@@ -22,18 +22,22 @@ const UploadImage = () => {
     },
   };
 
-  // const body = { buffer: base64code };
-  axios
-    .post(`http://127.0.0.1:8000/analyze/scan`, { buffer: base64code }, config)
-    .then((res) => {
-      console.log(res);
-      console.log(res.data);
-    });
-
   const onLoad = (fileString) => {
     console.log(fileString);
     setBase64code(fileString);
     console.log(base64code);
+    // const body = { buffer: base64code };
+    console.log(base64code);
+    axios
+      .post(
+        `http://127.0.0.1:8000/analyze/scan`,
+        { buffer: base64code },
+        config
+      )
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      });
   };
 
   const getBase64 = (file) => {
