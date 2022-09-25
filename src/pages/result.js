@@ -2,9 +2,6 @@ import { Button, Tabs, Tab, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-<<<<<<< Updated upstream
-import { Link } from "react-router-dom";
-=======
 import { DataGrid } from "@mui/x-data-grid";
 
 const ShowObject = ({ object, person }) => {
@@ -35,7 +32,6 @@ const ShowObject = ({ object, person }) => {
     </div>
   );
 };
->>>>>>> Stashed changes
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -78,18 +74,6 @@ const Result = () => {
   return (
     <div sx={{ height: "100vh" }}>
       <Box sx={{ height: "100vh" }}>
-<<<<<<< Updated upstream
-        <Link to={`/`}>
-          <img
-            src="logo_icon.png"
-            alt="logo_icon"
-            width="30"
-            height="30"
-            style={{ margin: "15px" }}
-          />
-        </Link>
-        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-=======
         <img
           src="logo_icon.png"
           alt="logo_icon"
@@ -98,7 +82,6 @@ const Result = () => {
           style={{ margin: "15px" }}
         />
         {/* <Box sx={{ height: "100%", borderBottom: 1, borderColor: "divider" }}>
->>>>>>> Stashed changes
           <Tabs
             onChange={handleChange}
             value={value}
