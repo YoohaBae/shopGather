@@ -1,70 +1,23 @@
-# Getting Started with Create React App
+# SBUHacks 2022: ShopGather
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Team name: WeByte
+Yooha Bae, Yool Bi Lee, Ha-Eun Park
 
-## Available Scripts
+### Challenges we are responding to 
+People who live in sharehouses buy groceries or goods together to save on shipping costs and garbage such as boxes and plastic bags used when distributing them. If they pay all at once, people often get confused and spend a lot of time organizing how much they have to pay. Also, people can make mistakes in calculating taxes. These steps are inconvenient processes they have to face constantly.
 
-In the project directory, you can run:
+### How our project addresses the challenge
+List items bought based on receipts. After putting in the names or nicknames of the people who purchased it together, each person checks the items they purchased. Then, it automatically calculates and shows the amount of money for each item and the tax for the item.
 
-### `npm start`
+### Technologies 
+React JS, Python, MUI
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### What we learned
+We recalled React JS usually and thought about some algorithm to get some numbers(price). 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Problems and Solution: 
+We are having difficulty with the algorithm for calculating the price of items that users buy with others. It was difficult to implement an algorithm that finds out how many people bought it together and calculates the price of the corresponding item based on it.
 
-### `npm test`
+### Proud
+Clean and straightforward UI design. Our motto of the design is “simple is the best.”
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
