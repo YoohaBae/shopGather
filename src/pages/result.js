@@ -4,9 +4,9 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { DataGrid } from "@mui/x-data-grid";
 import Grid from "@mui/material/Unstable_Grid2";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const ShowObject = ({ object, person }) => {
+const ShowObject = ({ object, person, listOfObject }) => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [total, setTotal] = useState(0);
 
@@ -20,9 +20,10 @@ const ShowObject = ({ object, person }) => {
       tempTotal += object[person.object[i]].price;
     }
     console.log(tempItems);
+    console.log(tempTotal * listOfObject.tax * 0.01);
     console.log(total);
     setSelectedItems(tempItems);
-    setTotal(tempTotal.toFixed(2));
+    setTotal((tempTotal + tempTotal * listOfObject.tax * 0.01).toFixed(2));
   }, []);
 
   return (
@@ -67,7 +68,7 @@ const ShowObject = ({ object, person }) => {
           marginRight: "12px",
         }}
       >
-        Total: {total}
+        Total (including Tax): {total}
       </h3>
     </>
   );
@@ -118,11 +119,13 @@ const Result = () => {
         <Grid container spacing={3}>
           <Grid>
             <Link to={`/`}>
-              <img src="logo_icon.png"
-                   alt="logo_icon"
-                   width="30"
-                   height="30"
-                   style={{ marginLeft: "15px" , marginTop: "15px"}}/>
+              <img
+                src="logo_icon.png"
+                alt="logo_icon"
+                width="30"
+                height="30"
+                style={{ marginLeft: "15px", marginTop: "15px" }}
+              />
             </Link>
           </Grid>
           <Grid display="flex" justifyContent="center" alignItems="center">
@@ -149,6 +152,7 @@ const Result = () => {
             object={listOfObject.products}
             person={person}
             key={person.id}
+            listOfObject={listOfObject}
           />
         ))}
       </Box>
