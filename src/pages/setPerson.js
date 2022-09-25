@@ -11,12 +11,25 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { TextField } from '@mui/material';
 
+const EnterName =({name, id})=>{
+    return (
+        <div style={{textAlign:"-webkit-center", display:"flex", alignItems:"center", justifyContent:"center", marginTop:"30px"}}>
+        <div style={{marginRight:"10px"}}>Member #{id}</div>
+        <TextField id="outlined-basic" label="Name/Nicname" variant="outlined" />
+        </div>
+    )
+  }  
 
 const UploadImage = () => {
   const [countOfPerson, setCountOfPerson] = useState(1);
   const [listOfPerson, setListOfPerson] = useState([{id:1, name:""}])
 
   const plusNumberofPerson =()=>{
+    var newPerson = {
+        id: countOfPerson+1,
+        name: ""
+    }
+    setListOfPerson([...listOfPerson, newPerson]); 
     setCountOfPerson(countOfPerson+1);
     console.log(countOfPerson);
   }
@@ -25,9 +38,11 @@ const UploadImage = () => {
     if(countOfPerson!=0){
       setCountOfPerson(countOfPerson-1);
       console.log(countOfPerson);
+      var tempPerson = listOfPerson;
+      tempPerson.splice(countOfPerson-1, 1);
+      setListOfPerson(tempPerson);
     }
   }
-
   
   return(
     <div>
@@ -52,16 +67,20 @@ const UploadImage = () => {
           <AddIcon/>
         </IconButton>
       </div>
-
+    {
+        listOfPerson.map((person) => (
+            <EnterName key={person.id} name={person.name} id={person.id}/>
+        ))
+    }
       <div>{
         }
 
       </div>
 
-      <div style={{textAlign:"-webkit-center", display:"flex", alignItems:"center", justifyContent:"center", marginTop:"30px"}}>
+      {/* <div style={{textAlign:"-webkit-center", display:"flex", alignItems:"center", justifyContent:"center", marginTop:"30px"}}>
       <div style={{marginRight:"10px"}}>Member #</div>
       <TextField id="outlined-basic" label="Name/Nicname" variant="outlined" />
-      </div>
+      </div> */}
 
       </Box>
     </div>
