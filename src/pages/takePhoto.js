@@ -40,7 +40,6 @@ const TakePhoto = () => {
       <Webcam
         audio={false}
         width={window.innerWidth}
-        height={window.innerHeight/2 - 50}
         screenshotFormat="image/jpeg"
         videoConstraints={videoConstraints}>
         {({ getScreenshot }) => (
@@ -53,7 +52,7 @@ const TakePhoto = () => {
               aria-label="take picture"
               component="label"
               onClick={() => {
-                const imageSrc = getScreenshot({width: window.innerWidth, height: window.innerHeight/2-50});
+                const imageSrc = getScreenshot({width: window.innerWidth});
                 setImgSrc(imageSrc);
                 setIsCaptured(true);
               }}>
