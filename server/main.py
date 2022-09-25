@@ -101,6 +101,9 @@ def split_text_walmart(text):
     result = {"subtotal": subtotal, "tax": tax, "total": total, "products": formatted_products}
     return result
 
+@app.get("/")
+def hi():
+    return {"hi": "hello"}
 
 @app.post("/analyze/scan")
 def analyze_scanned_image():
