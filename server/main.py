@@ -41,6 +41,7 @@ def isfloat(num):
 def format_products(products_line):
     products = []
     price = None
+    id_num = 0
     for p in products_line:
         new_p = re.split(r"[~\t\r\tx]+", p)
         if not price:
@@ -49,8 +50,9 @@ def format_products(products_line):
                 price = float(min(find))
             else:
                 price = None
-        product_obj = {"name": new_p[0], "price": price}
+        product_obj = {"id": id_num, "name": new_p[0], "price": price}
         products.append(product_obj)
+        id_num+=1
         price = None
     return products
 
@@ -125,7 +127,6 @@ def analyze_scanned_image(buffer=Body(...)):
     #img.save(buffer, format="JPEG")
     #buffered = base64.b64encode(buffer.getvalue())
     #buffered = b'data:image/jpg;base64,' + buffered
-    print(buffer)
     text = ocr_space_buffer(buffer["buffer"])
     json_type = json.loads(text)
     parsed_text = json_type["ParsedResults"][0]["ParsedText"]
