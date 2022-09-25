@@ -4,6 +4,7 @@
   } from "@mui/material";
   import { Box } from "@mui/system";
   import React from "react";
+  import { Link } from "react-router-dom";
   
   const SelectImageType = () => {
     return (
@@ -25,8 +26,10 @@
                 flexDirection="column"
                 sx={{height:"90%"}}
             >
-                <Button variant="outlined" sx={{width: "50px", marginBottom: "15px"}}>Photo</Button>
-                <Button variant="outlined" sx={{width: "50px", marginBottom: "15px"}}>Scan</Button>
+                <Button variant="outlined" sx={{width: "50px", marginBottom: "15px"}}>
+                    <Link to={`/setPerson`} style={{ color: "inherit" }}>Photo</Link></Button>
+                <Button variant="outlined" sx={{width: "50px", marginBottom: "15px"}}>
+                    <Link to={`/setPerson`} style={{ color: "inherit" }}>Scan</Link></Button>
             </Box>
         </Box>
         
