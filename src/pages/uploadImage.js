@@ -2,16 +2,11 @@ import { Button } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const UploadImage = () => {
   const [extension, setExtension] = useState("");
 
-  // const handleImage = (e) => {
-  //   // console.log(e.target.value);
-  //   setExtension(e.target.value);
-  // };
-
-  // var base64code = "";
   const [base64code, setBase64code] = useState("");
   const handleImage = (e) => {
     setExtension(e.target.value);
@@ -20,9 +15,23 @@ const UploadImage = () => {
     getBase64(file);
   };
 
+  const config = {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+    },
+  };
+
+  // const body = { buffer: base64code };
+  axios
+    .post(`http://127.0.0.1:8000/analyze/scan`, { buffer: base64code }, config)
+    .then((res) => {
+      console.log(res);
+      console.log(res.data);
+    });
+
   const onLoad = (fileString) => {
     console.log(fileString);
-    // this.base64code = fileString;
     setBase64code(fileString);
     console.log(base64code);
   };
