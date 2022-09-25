@@ -8,8 +8,12 @@ const ShowObject = ({ object, setSelectionModel, selectionModel }) => {
   return (
     <div style={{ height: "75%", width: "96%", paddingLeft: "10px" }}>
       <DataGrid
+        editMode="row"
         rows={object}
-        columns={[{ field: "name", width: 300 }, { field: "price" }]}
+        columns={[
+          { field: "name", width: 300, editable: true },
+          { field: "price", editable: true },
+        ]}
         checkboxSelection
         pageSize={10}
         onSelectionModelChange={(newSelectionModel) => {
@@ -64,8 +68,7 @@ const CheckList = () => {
             display: "flex",
             alignItems: "center",
             marginLeft: "40px",
-          }}
-        >
+          }}>
           <div style={{ marginRight: "10px" }}>
             <h2>
               Member #{count + 1}:{" "}
