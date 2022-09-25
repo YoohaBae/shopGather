@@ -25,7 +25,7 @@ const TakePhoto = () => {
 
     axios
       .post(
-        'http://134.122.18.108:8000/api/analyze/scan',
+        'http://134.122.18.108:80/api/analyze/scan',
         { buffer: imgSrc },
         config
       )
