@@ -1,10 +1,81 @@
-import { FormGroup, FormControlLabel, Checkbox } from "@mui/material";
+import { Button } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { DataGrid } from "@mui/x-data-grid";
+
+const ShowObject = ({ object }) => {
+  console.log(object);
+  return (
+    <div style={{ height: "75%", width: "96%", paddingLeft: "10px" }}>
+      <DataGrid
+        rows={object}
+        columns={[{ field: "name", width: 300 }, { field: "price" }]}
+        checkboxSelection
+        pageSize={10}
+      />
+    </div>
+  );
+};
 
 const CheckList = () => {
-  const [listOfObject, setListOfObject] = useState([]);
+  const [listOfObject, setListOfObject] = useState({
+    subtotal: 93.62,
+    tax: 1,
+    total: 98.21,
+    products: [
+      {
+        id: 1,
+        name: "STKOBRLPLABL",
+        price: 1.97,
+      },
+      {
+        id: 2,
+        name: "STKOBRLPLABL",
+        price: 1.97,
+      },
+      {
+        id: 3,
+        name: "STKO SUNFLWR",
+        price: 0.97,
+      },
+      {
+        id: 4,
+        name: "STKO SUNFLWR",
+        price: 0.97,
+      },
+      {
+        id: 5,
+        name: "STKO SUNFLWR",
+        price: 0.97,
+      },
+      {
+        id: 6,
+        name: "STKO SUNFLWR",
+        price: 0.97,
+      },
+      {
+        id: 7,
+        name: "BLING BEADS",
+        price: 0.97,
+      },
+      {
+        id: 8,
+        name: "GREAT VALUE",
+        price: 9.97,
+      },
+      {
+        id: 9,
+        name: "LIPTON",
+        price: 4.48,
+      },
+      {
+        id: 10,
+        name: "DRY DOG",
+        price: 12,
+      },
+    ],
+  });
   const [listOfPerson, setListOfPerson] = useState(
     JSON.parse(window.sessionStorage.getItem("people"))
   );
@@ -15,15 +86,8 @@ const CheckList = () => {
   useEffect(() => {
     console.log(listOfPerson);
     console.log(count);
+    console.log(listOfObject);
   }, []);
-
-  const showObject = ({ name, id, listOfObject, setListOfObject }) => {
-    return (
-      <FormGroup style={{ marginLeft: "50px" }}>
-        <FormControlLabel control={<Checkbox />} label="Label" />
-      </FormGroup>
-    );
-  };
 
   return (
     <div>
@@ -47,19 +111,16 @@ const CheckList = () => {
           <div style={{ marginRight: "10px" }}>
             <h2>
               Member #1:{" "}
-              {JSON.parse(window.sessionStorage.getItem("people"))[0].name}
+              {JSON.parse(window.sessionStorage.getItem("people"))[count].name}
             </h2>
           </div>
         </div>
-        {listOfObject.map((object) => (
-          <showObject
-            key={object.id}
-            name={object.name}
-            id={object.id}
-            listOfObject={listOfObject}
-            setListOfObject={setListOfObject}
-          />
-        ))}
+        <ShowObject object={listOfObject.products} />
+        <Button size="large" sx={{ float: "right" }}>
+          <Link to={`/selectImageType`} style={{ color: "inherit" }}>
+            Next
+          </Link>
+        </Button>
       </Box>
     </div>
   );
