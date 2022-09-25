@@ -25,15 +25,16 @@ const UploadImage = () => {
   const onLoad = async (fileString) => {
     // const body = { buffer: base64code };
     axios
-        .post(
-            `http://127.0.0.1:8000/analyze/scan`,
-            {buffer: fileString},
-            config
-        )
-        .then((res) => {
-          console.log(res);
-          console.log(res.data);
-        });
+      .post(
+        `http://127.0.0.1:8000/analyze/scan`,
+        { buffer: fileString },
+        config
+      )
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        window.sessionStorage.setItem("items", JSON.stringify(res.data));
+      });
   };
 
   const getBase64 = (file) => {

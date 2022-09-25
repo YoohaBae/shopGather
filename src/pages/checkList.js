@@ -19,63 +19,9 @@ const ShowObject = ({ object }) => {
 };
 
 const CheckList = () => {
-  const [listOfObject, setListOfObject] = useState({
-    subtotal: 93.62,
-    tax: 1,
-    total: 98.21,
-    products: [
-      {
-        id: 1,
-        name: "STKOBRLPLABL",
-        price: 1.97,
-      },
-      {
-        id: 2,
-        name: "STKOBRLPLABL",
-        price: 1.97,
-      },
-      {
-        id: 3,
-        name: "STKO SUNFLWR",
-        price: 0.97,
-      },
-      {
-        id: 4,
-        name: "STKO SUNFLWR",
-        price: 0.97,
-      },
-      {
-        id: 5,
-        name: "STKO SUNFLWR",
-        price: 0.97,
-      },
-      {
-        id: 6,
-        name: "STKO SUNFLWR",
-        price: 0.97,
-      },
-      {
-        id: 7,
-        name: "BLING BEADS",
-        price: 0.97,
-      },
-      {
-        id: 8,
-        name: "GREAT VALUE",
-        price: 9.97,
-      },
-      {
-        id: 9,
-        name: "LIPTON",
-        price: 4.48,
-      },
-      {
-        id: 10,
-        name: "DRY DOG",
-        price: 12,
-      },
-    ],
-  });
+  const [listOfObject, setListOfObject] = useState(
+    JSON.parse(window.sessionStorage.getItem("items"))
+  );
   const [listOfPerson, setListOfPerson] = useState(
     JSON.parse(window.sessionStorage.getItem("people"))
   );
@@ -106,8 +52,7 @@ const CheckList = () => {
             display: "flex",
             alignItems: "center",
             marginLeft: "40px",
-          }}
-        >
+          }}>
           <div style={{ marginRight: "10px" }}>
             <h2>
               Member #1:{" "}
