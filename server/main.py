@@ -23,6 +23,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+@app.get("/")
+def home():
+    return {"home": "home"}
+
+
 router = APIRouter(prefix="/api")
 
 server = f"{os.getcwd()}/server/data/"
@@ -54,7 +60,7 @@ def format_products(products_line):
                 price = None
         product_obj = {"id": id_num, "name": new_p[0], "price": price}
         products.append(product_obj)
-        id_num+=1
+        id_num += 1
         price = None
     return products
 
@@ -117,20 +123,25 @@ def split_text_walmart(text):
     result = {"subtotal": subtotal, "tax": tax, "total": total, "products": formatted_products}
     return result
 
+
 @router.get("/")
 def hi():
     return {"hi": "hello"}
 
+
 @router.post("/analyze/scan")
 def analyze_scanned_image(buffer=Body(...)):
-    #file_name = "walmart3.jpeg"
-    #img = Image.open(os.path.join(server, file_name))
-    #buffer = BytesIO()
-    #img.save(buffer, format="JPEG")
-    #buffered = base64.b64encode(buffer.getvalue())
-    #buffered = b'data:image/jpg;base64,' + buffered
+    # file_name = "walmart3.jpeg"
+    # img = Image.open(os.path.join(server, file_name))
+    # buffer = BytesIO()
+    # img.save(buffer, format="JPEG")
+    # buffered = base64.b64encode(buffer.getvalue())
+    # buffered = b'data:image/jpg;base64,' + buffered
     text = ocr_space_buffer(buffer["buffer"])
     json_type = json.loads(text)
     parsed_text = json_type["ParsedResults"][0]["ParsedText"]
     response = split_text_walmart(parsed_text)
     return response
+
+
+app.include_router(router)
