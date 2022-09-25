@@ -27,7 +27,8 @@ def create_digital_scan(image):
     receipt_contour = get_receipt_contour(largest_contours)
     scanned = wrap_perspective(original.copy(), contour_to_rect(receipt_contour, resize_ratio))
     result = bw_scanner(scanned)
-    return result
+    output = Image.fromarray(result)
+    return output
 
 def opencv_resize(image, ratio):
     width = int(image.shape[1] * ratio)
