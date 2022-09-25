@@ -3,6 +3,7 @@ from fastapi import FastAPI
 import os
 import base64
 from io import BytesIO
+from fastapi import Body
 import re
 import json
 from difflib import SequenceMatcher
@@ -119,7 +120,7 @@ def hi():
     return {"hi": "hello"}
 
 @app.post("/analyze/scan")
-def analyze_scanned_image(buffer):
+def analyze_scanned_image(buffer=Body(...)):
     #file_name = "walmart3.jpeg"
     #img = Image.open(os.path.join(server, file_name))
     #buffer = BytesIO()
