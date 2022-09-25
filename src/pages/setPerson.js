@@ -72,15 +72,6 @@ const UploadImage = () => {
             <EnterName key={person.id} name={person.name} id={person.id}/>
         ))
     }
-      <div>{
-        }
-
-      </div>
-
-      {/* <div style={{textAlign:"-webkit-center", display:"flex", alignItems:"center", justifyContent:"center", marginTop:"30px"}}>
-      <div style={{marginRight:"10px"}}>Member #</div>
-      <TextField id="outlined-basic" label="Name/Nicname" variant="outlined" />
-      </div> */}
 
       </Box>
     </div>
