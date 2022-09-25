@@ -6,9 +6,33 @@ import { Link } from "react-router-dom";
 const UploadImage = () => {
   const [extension, setExtension] = useState("");
 
+  // const handleImage = (e) => {
+  //   // console.log(e.target.value);
+  //   setExtension(e.target.value);
+  // };
+
+  // var base64code = "";
+  const [base64code, setBase64code] = useState("");
   const handleImage = (e) => {
-    console.log(e.target.value);
     setExtension(e.target.value);
+    const files = e.target.files;
+    const file = files[0];
+    getBase64(file);
+  };
+
+  const onLoad = (fileString) => {
+    console.log(fileString);
+    // this.base64code = fileString;
+    setBase64code(fileString);
+    console.log(base64code);
+  };
+
+  const getBase64 = (file) => {
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      onLoad(reader.result);
+    };
   };
 
   return (
@@ -26,12 +50,10 @@ const UploadImage = () => {
           justifyContent="center"
           alignItems="center"
           flexDirection="column"
-          sx={{ height: "85%" }}
-        >
+          sx={{ height: "85%" }}>
           <Button
             variant="outlined"
-            sx={{ width: "250px", marginBottom: "15px" }}
-          >
+            sx={{ width: "250px", marginBottom: "15px" }}>
             Take Photo of Receipt
           </Button>
           <Button variant="contained" component="label" sx={{ width: "250px" }}>
