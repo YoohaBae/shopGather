@@ -48,24 +48,24 @@ const UploadImage = () => {
   return (
     <div>
       <Box sx={{ height: "100vh" }}>
-        <img
-          src="logo_icon.png"
-          alt="logo_icon"
-          width="30"
-          height="30"
-          style={{ margin: "15px" }}
-        />
+        <Link to={`/`}>
+          <img
+            src="logo_icon.png"
+            alt="logo_icon"
+            width="30"
+            height="30"
+            style={{ margin: "15px" }}
+          />
+        </Link>
         <Box
           display="flex"
           justifyContent="center"
           alignItems="center"
           flexDirection="column"
-          sx={{ height: "85%" }}
-        >
+          sx={{ height: "85%" }}>
           <Button
             variant="outlined"
-            sx={{ width: "250px", marginBottom: "15px" }}
-          >
+            sx={{ width: "250px", marginBottom: "15px" }}>
             Take Photo of Receipt
           </Button>
           <Button variant="contained" component="label" sx={{ width: "250px" }}>

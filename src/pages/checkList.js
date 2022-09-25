@@ -38,12 +38,6 @@ const CheckList = () => {
     JSON.parse(window.sessionStorage.getItem("count"))
   );
 
-  //   useEffect(() => {
-  //     console.log(listOfPerson);
-  //     console.log(count);
-  //     console.log(listOfObject);
-  //   }, []);
-
   const handleClickNext = () => {
     var temp = listOfPerson;
     temp[count].object = selectionModel;
@@ -54,13 +48,15 @@ const CheckList = () => {
   return (
     <div>
       <Box sx={{ height: "100vh" }}>
-        <img
-          src="logo_icon.png"
-          alt="logo_icon"
-          width="30"
-          height="30"
-          style={{ margin: "15px" }}
-        />
+        <Link to={`/`}>
+          <img
+            src="logo_icon.png"
+            alt="logo_icon"
+            width="30"
+            height="30"
+            style={{ margin: "15px" }}
+          />
+        </Link>
 
         <div
           style={{

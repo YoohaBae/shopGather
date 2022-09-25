@@ -24,8 +24,7 @@ const EnterName = ({ name, id, listOfPerson, setListOfPerson }) => {
         alignItems: "center",
         justifyContent: "center",
         marginTop: "30px",
-      }}
-    >
+      }}>
       <div style={{ marginRight: "10px" }}>Member #{id}</div>
       <TextField
         id="outlined-basic"
@@ -72,13 +71,15 @@ const UploadImage = () => {
   return (
     <div>
       <Box>
-        <img
-          src="logo_icon.png"
-          alt="logo_icon"
-          width="30"
-          height="30"
-          style={{ margin: "15px" }}
-        />
+        <Link to={`/`}>
+          <img
+            src="logo_icon.png"
+            alt="logo_icon"
+            width="30"
+            height="30"
+            style={{ margin: "15px" }}
+          />
+        </Link>
 
         <div style={{ textAlign: "-webkit-center" }}>
           <h1>Number of people</h1>
@@ -89,21 +90,18 @@ const UploadImage = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-          }}
-        >
+          }}>
           <IconButton
             aria-label="delete"
             style={{ marginTop: "8px", marginRight: "20px" }}
-            onClick={minusNumberofPerson}
-          >
+            onClick={minusNumberofPerson}>
             <RemoveIcon />
           </IconButton>
           <div>{countOfPerson}</div>
           <IconButton
             aria-label="add"
             style={{ marginTop: "8px", marginLeft: "20px" }}
-            onClick={plusNumberofPerson}
-          >
+            onClick={plusNumberofPerson}>
             <AddIcon />
           </IconButton>
         </div>

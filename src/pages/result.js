@@ -2,6 +2,7 @@ import { Button, Tabs, Tab, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -12,8 +13,7 @@ function TabPanel(props) {
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
+      {...other}>
       {value === index && (
         <Box sx={{ p: 3 }}>
           <Typography>{children}</Typography>
@@ -46,19 +46,20 @@ const Result = () => {
   return (
     <div>
       <Box sx={{ height: "100vh" }}>
-        <img
-          src="logo_icon.png"
-          alt="logo_icon"
-          width="30"
-          height="30"
-          style={{ margin: "15px" }}
-        />
+        <Link to={`/`}>
+          <img
+            src="logo_icon.png"
+            alt="logo_icon"
+            width="30"
+            height="30"
+            style={{ margin: "15px" }}
+          />
+        </Link>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs
             onChange={handleChange}
             value={value}
-            aria-label="basic tabs example"
-          >
+            aria-label="basic tabs example">
             {listOfPerson.map((person) => (
               <Tab label={person.name} key={person.id} />
             ))}

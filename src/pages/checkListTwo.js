@@ -50,13 +50,15 @@ const CheckListTwo = () => {
   return (
     <div>
       <Box sx={{ height: "100vh" }}>
-        <img
-          src="logo_icon.png"
-          alt="logo_icon"
-          width="30"
-          height="30"
-          style={{ margin: "15px" }}
-        />
+        <Link to={`/`}>
+          <img
+            src="logo_icon.png"
+            alt="logo_icon"
+            width="30"
+            height="30"
+            style={{ margin: "15px" }}
+          />
+        </Link>
 
         <div
           style={{
@@ -64,8 +66,7 @@ const CheckListTwo = () => {
             display: "flex",
             alignItems: "center",
             marginLeft: "40px",
-          }}
-        >
+          }}>
           <div style={{ marginRight: "10px" }}>
             <h2>
               Member #{count + 1}:{" "}
