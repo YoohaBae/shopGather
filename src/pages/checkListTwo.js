@@ -22,7 +22,7 @@ const ShowObject = ({ object, setSelectionModel, selectionModel }) => {
   );
 };
 
-const CheckList = () => {
+const CheckListTwo = () => {
   const [selectionModel, setSelectionModel] = useState([]);
   const [listOfObject, setListOfObject] = useState(
     JSON.parse(window.sessionStorage.getItem("items"))
@@ -84,7 +84,7 @@ const CheckList = () => {
               Complete
             </Link>
           ) : (
-            <Link to={`/checkListTwo`} style={{ color: "inherit" }}>
+            <Link to={`/checkList`} style={{ color: "inherit" }}>
               Next
             </Link>
           )}
@@ -94,4 +94,4 @@ const CheckList = () => {
   );
 };
 
-export default CheckList;
+export default CheckListTwo;
