@@ -16,9 +16,7 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:3000",
-        "http://shopgather.tech",
-        "https://shopgather.tech"
+        "*"
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -127,7 +125,8 @@ def analyze_scanned_image(buffer=Body(...)):
     #img.save(buffer, format="JPEG")
     #buffered = base64.b64encode(buffer.getvalue())
     #buffered = b'data:image/jpg;base64,' + buffered
-    text = ocr_space_buffer(buffer)
+    print(buffer)
+    text = ocr_space_buffer(buffer["buffer"])
     json_type = json.loads(text)
     parsed_text = json_type["ParsedResults"][0]["ParsedText"]
     response = split_text_walmart(parsed_text)
