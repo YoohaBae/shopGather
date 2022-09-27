@@ -1,4 +1,4 @@
-import { Button, Tabs, Tab, Link, Typography } from "@mui/material";
+import { Button, Tabs, Tab, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
@@ -6,6 +6,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Download } from "@mui/icons-material";
 import * as htmlToImage from "html-to-image";
+import { Link } from "react-router-dom";
 
 const ShowObject = ({ object, person, listOfObject, overlapped }) => {
   const [selectedItems, setSelectedItems] = useState([]);
