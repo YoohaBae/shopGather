@@ -9,8 +9,12 @@ const ShowObject = ({ object, setSelectionModel, selectionModel }) => {
   return (
     <div style={{ height: "75%", width: "96%", paddingLeft: "10px" }}>
       <DataGrid
+        editMode="row"
         rows={object}
-        columns={[{ field: "name", width: 300 }, { field: "price" }]}
+        columns={[
+          { field: "name", width: 300, editable: true },
+          { field: "price", editable: true },
+        ]}
         checkboxSelection
         pageSize={10}
         onSelectionModelChange={(newSelectionModel) => {
@@ -34,14 +38,25 @@ const CheckListTwo = () => {
   const [count, setCount] = useState(
     JSON.parse(window.sessionStorage.getItem("count"))
   );
-
-  //   useEffect(() => {
-  //     console.log(listOfPerson);
-  //     console.log(count);
-  //     console.log(listOfObject);
-  //   }, []);
+  const [selectedItems, setSelectedItems] = useState(
+    JSON.parse(window.sessionStorage.getItem("selected"))
+  );
 
   const handleClickNext = () => {
+    var tempSelected = selectedItems;
+    selectionModel.map((selection) => {
+      tempSelected.push(selection);
+    });
+    console.log(tempSelected);
+    window.sessionStorage.setItem("selected", JSON.stringify(tempSelected));
+    if (count === listOfPerson.length - 1) {
+      const result = {};
+      tempSelected.forEach((x) => {
+        result[x] = (result[x] || 0) + 1;
+      });
+      console.log(result);
+      window.sessionStorage.setItem("overlapped", JSON.stringify(result));
+    }
     var temp = listOfPerson;
     temp[count].object = selectionModel;
     window.sessionStorage.setItem("people", JSON.stringify(temp));
@@ -51,20 +66,22 @@ const CheckListTwo = () => {
   return (
     <div>
       <Box sx={{ height: "100vh" }}>
-          <Grid container spacing={3}>
-              <Grid>
-                  <Link to={`/`}>
-                      <img src="logo_icon.png"
-                           alt="logo_icon"
-                           width="30"
-                           height="30"
-                           style={{ marginLeft: "15px" , marginTop: "15px"}}/>
-                  </Link>
-              </Grid>
-              <Grid display="flex" justifyContent="center" alignItems="center">
-                  <h3>ShopGather</h3>
-              </Grid>
+        <Grid container spacing={3}>
+          <Grid>
+            <Link to={`/`}>
+              <img
+                src="logo_icon.png"
+                alt="logo_icon"
+                width="30"
+                height="30"
+                style={{ marginLeft: "15px", marginTop: "15px" }}
+              />
+            </Link>
           </Grid>
+          <Grid display="flex" justifyContent="center" alignItems="center">
+            <h3>ShopGather</h3>
+          </Grid>
+        </Grid>
 
         <div
           style={{
@@ -72,7 +89,8 @@ const CheckListTwo = () => {
             display: "flex",
             alignItems: "center",
             marginLeft: "40px",
-          }}>
+          }}
+        >
           <div style={{ marginRight: "10px" }}>
             <h2>
               Member #{count + 1}:{" "}

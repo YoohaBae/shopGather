@@ -26,7 +26,7 @@ const ShowObject = ({ object, person, listOfObject, overlapped }) => {
       //   console.log(itemC);
 
       tempItems.push(objectL);
-      tempTotal += objectL.price;
+      tempTotal += objectL.price / itemC;
     }
     // console.log(tempItems);
     // console.log(tempTotal);
@@ -122,7 +122,12 @@ const Result = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const [overlapped, setOverlapped] = useState({});
+  const [overlapped, setOverlapped] = useState(
+    JSON.parse(window.sessionStorage.getItem("overlapped"))
+  );
+  const [selectedItems, setSelectedItems] = useState(
+    JSON.parse(window.sessionStorage.getItem("selected"))
+  );
 
   const downloadSnapshot = () => {
     const screenshotTarget = document.body;
@@ -136,22 +141,6 @@ const Result = () => {
         link.click();
       });
   };
-
-  useEffect(() => {
-    var tempOverlapped = [];
-    console.log(listOfPerson);
-    for (let i = 0; i < listOfPerson.length; i++) {
-      for (let j = 0; j < listOfPerson[i].object.length; j++)
-        tempOverlapped.push(listOfPerson[i].object[j]);
-    }
-    const result = {};
-    tempOverlapped.forEach((x) => {
-      result[x] = (result[x] || 0) + 1;
-    });
-    setOverlapped(result);
-    console.log(result);
-    console.log(tempOverlapped);
-  }, []);
 
   return (
     <div sx={{ height: "100vh" }}>

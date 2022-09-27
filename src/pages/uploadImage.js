@@ -2,9 +2,8 @@ import { Button } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios"
-import Grid from '@mui/material/Unstable_Grid2';
-
+import axios from "axios";
+import Grid from "@mui/material/Unstable_Grid2";
 
 const UploadImage = () => {
   const [extension, setExtension] = useState("");
@@ -28,7 +27,7 @@ const UploadImage = () => {
     // const body = { buffer: base64code };
     axios
       .post(
-        `http://134.122.18.108:80/api/analyze/scan`,
+        `http://127.0.0.1:8000/api/analyze/scan`,
         { buffer: fileString },
         config
       )
@@ -36,6 +35,7 @@ const UploadImage = () => {
         console.log(res);
         console.log(res.data);
         window.sessionStorage.setItem("items", JSON.stringify(res.data));
+        window.sessionStorage.setItem("selected", JSON.stringify([]));
       });
   };
 
@@ -52,16 +52,18 @@ const UploadImage = () => {
       <Box sx={{ height: "100vh" }}>
         <Grid container spacing={3}>
           <Grid>
-              <Link to={`/`}>
-              <img src="logo_icon.png"
+            <Link to={`/`}>
+              <img
+                src="logo_icon.png"
                 alt="logo_icon"
                 width="30"
                 height="30"
-                style={{ marginLeft: "15px" , marginTop: "15px"}}/>
-              </Link>
+                style={{ marginLeft: "15px", marginTop: "15px" }}
+              />
+            </Link>
           </Grid>
           <Grid display="flex" justifyContent="center" alignItems="center">
-              <h3>ShopGather</h3>
+            <h3>ShopGather</h3>
           </Grid>
         </Grid>
         <Box
@@ -69,13 +71,14 @@ const UploadImage = () => {
           justifyContent="center"
           alignItems="center"
           flexDirection="column"
-          sx={{ height: "85%" }}>
+          sx={{ height: "85%" }}
+        >
           <Button
             variant="outlined"
             sx={{ width: "250px", marginBottom: "15px" }}
           >
             <Link to={`/takePhoto`} style={{ color: "inherit" }}>
-            Take Photo of Receipt
+              Take Photo of Receipt
             </Link>
           </Button>
           <Button variant="contained" component="label" sx={{ width: "250px" }}>

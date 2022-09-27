@@ -25,7 +25,7 @@ const TakePhoto = () => {
 
     axios
       .post(
-        'http://134.122.18.108:80/api/analyze/scan',
+        "http://127.0.0.1:8000/api/analyze/scan",
         { buffer: imgSrc },
         config
       )
@@ -41,21 +41,24 @@ const TakePhoto = () => {
         audio={false}
         width={window.innerWidth}
         screenshotFormat="image/jpeg"
-        videoConstraints={videoConstraints}>
+        videoConstraints={videoConstraints}
+      >
         {({ getScreenshot }) => (
           <div
             style={{
               textAlign: "-webkit-center",
-            }}>
+            }}
+          >
             <IconButton
               color="primary"
               aria-label="take picture"
               component="label"
               onClick={() => {
-                const imageSrc = getScreenshot({width: window.innerWidth});
+                const imageSrc = getScreenshot({ width: window.innerWidth });
                 setImgSrc(imageSrc);
                 setIsCaptured(true);
-              }}>
+              }}
+            >
               <PhotoCamera />
             </IconButton>
             {imgSrc && <img src={imgSrc} />}
@@ -66,11 +69,13 @@ const TakePhoto = () => {
         <div
           style={{
             textAlign: "-webkit-center",
-          }}>
+          }}
+        >
           <Button
             variant="outlined"
             sx={{ width: "250px", marginBottom: "15px" }}
-            onClick={sendImage}>
+            onClick={sendImage}
+          >
             <Link to={`/setPerson`} style={{ color: "inherit" }}>
               Submit
             </Link>
